@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <title>fröccs</title>
+</head>
+<body>
+
+    <!-- smudges -->
+    <img src="assets/smudge-red.png" alt="" id="red" class="smudges">
+    <img src="assets/smudge.png" alt="" id="green" class="smudges">
+    <img src="assets/smudge-beige.png" alt="" id="beige" class="smudges">
+
+    <!-- title -->
+    <h2 class="titulum"><img src="assets/titulum.png" alt="fröccs"></h2>
+
+    <!-- navbar toggle button -->
+    <button class="buttons" type="button" id="lines"></button>
+
+    <!-- navbar -->
+    <div id="navbar">
+        <div id="froccslist">
+            <!-- filled by JS -->
+        </div>
+    </div>
+
+    <!-- drawing grid -->
+    <div class="drawings">
+
+        <figure class="drawing-item">
+            <img src="assets/drawings/vicehazmester.png" alt="" class="drawing"
+                data-name="viceházmester"
+                data-wine="2"
+                data-soda="3"
+                data-type="fehér"
+                data-desc="a nagybetűs fröccs (szerény véleményem szerint legalábbis)
+                klasszikus kocsma teszt eszköze: tudja-e a korcsmáros visszakérdezés nélkül mi is ez">
+            <figcaption>viceházmester</figcaption>
+        </figure>
+
+        <figure class="drawing-item">
+            <img src="assets/drawings/sportfroccs.png" alt="" class="drawing"
+                data-name="sportfröccs"
+                data-wine="1"
+                data-soda="4"
+                data-type="fehér"
+                data-desc="már már nem is fröccs, balcsin hatékonyan oltja a szomjat.
+                kis sportos">
+            <figcaption>sportfröccs</figcaption>
+        </figure>
+
+
+
+    </div>
+
+    <!-- overlay -->
+    <div id="drawing-overlay">
+        <img id="overlay-drawing" src="" alt="">
+        <div id="overlay-info">
+            <h2 id="overlay-name"></h2>
+            <p id="overlay-type"></p>
+            <p id="overlay-ratio"></p>
+            <p id="overlay-desc"></p>
+        </div>
+    </div>
+
+    <script src="js/code.js" defer></script>
+</body>
+</html>

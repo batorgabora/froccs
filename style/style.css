@@ -1,0 +1,299 @@
+:root {
+    --drawing-size: 14vmax;
+    --bg: #131414;
+    --text-main: #c8bfb0;
+    --text-muted: rgba(227, 215, 194, 0.7);
+    --text-subtle: rgba(180, 170, 155, 0.6);
+    --accent: rgba(180, 140, 80, 0.7);
+    --overlay-bg: rgba(10, 8, 6, 0.93);
+    --border-subtle: rgba(180, 170, 155, 0.15);
+    --lines-size: 3vmax;
+}
+
+html, body {
+    background-color: var(--bg);
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--text-main);
+}
+
+/* ============================================================
+   SMUDGES
+   ============================================================ */
+
+.smudges {
+    border: none;
+    position: fixed;
+    opacity: 0.25;
+    pointer-events: none;
+}
+#green {
+    width: 70vmax;
+    top: -24vmax;
+    left: -30vmax;
+    transform: rotate(30deg);
+}
+#red {
+    width: 75vmax;
+    bottom: -24vmax;
+    right: -50vmax;
+    transform: rotate(100deg);
+}
+#beige {
+    width: 40vmax;
+    bottom: -8vmax;
+    left: -28vmax;
+    transform: rotate(-60deg);
+}
+
+/* ============================================================
+   TITLE
+   ============================================================ */
+
+.titulum {
+    width: 170%;
+    height: auto;
+    text-align: center;
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.titulum img {
+    width: 9vmax;
+}
+
+/* ============================================================
+   LINES BUTTON
+   ============================================================ */
+
+.buttons {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: fixed;
+    filter: drop-shadow(0 0 15px #000000);
+    z-index: 9999;
+}
+
+#lines {
+    background-image: url("../assets/lines.png");
+    width: var(--lines-size);
+    height: var(--lines-size);
+    left: 2vmin;
+    top: 3.5vmin;
+    transform: rotate(1deg);
+}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+
+#navbar {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    left: 4vmax;
+    top: 0;
+    padding-top: 12vmax;
+    padding-bottom: 4vmax;
+    width: 22vmax;
+    height: 100vh;
+    max-height: 100vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+    scrollbar-width: none;
+    z-index: 9999;
+}
+#navbar::-webkit-scrollbar {
+    display: none;
+}
+
+#froccslist {
+    display: flex;
+    flex-direction: column;
+    gap: 1vmax;
+}
+#froccslist a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 2.1vmin;
+    font-style: italic;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+#froccslist a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+/* ============================================================
+   DRAWING GRID
+   ============================================================ */
+
+.drawings {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3vmax;
+    padding: 25vmin 8vmin 8vmin 8vmin;
+    justify-items: center;
+    align-items: center;
+}
+.drawings.compact {
+    grid-template-columns: repeat(3, 1fr);
+    padding-left: 20vw; /* push grid right to make room for navbar */
+}
+
+/* figure wrapper — enables caption and unified hover */
+.drawing-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1vmax;
+    cursor: pointer;
+    margin: 0;
+}
+
+.drawing {
+    width: var(--drawing-size);
+    height: var(--drawing-size);
+    object-fit: cover;
+    filter: drop-shadow(0 0 12px rgba(180, 140, 80, 0.15));
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+/* hover on figure so both image and caption react together */
+.drawing-item:hover .drawing {
+    filter: drop-shadow(0 0 20px rgba(180, 140, 80, 0.35));
+    transform: scale(1.03);
+}
+
+.drawing-item figcaption {
+    font-size: 1.6vmin;
+    color: var(--text-muted);
+    font-style: italic;
+    text-align: center;
+    letter-spacing: 0.05em;
+    transition: color 0.3s ease;
+}
+
+.drawing-item:hover figcaption {
+    color: var(--text-main);
+}
+
+/* ============================================================
+   OVERLAY
+   ============================================================ */
+
+#drawing-overlay {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 3vh;
+    padding: 2vh 4vw 0 4vw;
+    position: fixed;
+    inset: 0;
+    overflow-y: auto;
+    background-color: var(--overlay-bg);
+    z-index: 999999;
+    cursor: pointer;
+}
+
+#overlay-drawing {
+    width: calc(var(--drawing-size) * 2);
+    object-fit: contain;
+    filter: drop-shadow(0 0 40px rgba(180, 140, 80, 0.2));
+}
+
+#overlay-name {
+    font-size: 4vmin;
+    color: var(--text-main);
+    margin: 0;
+    font-style: italic;
+    text-align: center;
+    padding: 0vmin 2vmin 0 2vmin;
+}
+
+#overlay-type {
+    font-size: 2.2vmin;
+    color: var(--accent);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    text-align: center;
+    padding: 1.5vmin 2vmin 0 2vmin;
+}
+
+#overlay-ratio {
+    font-size: 3vmin;
+    color: var(--text-muted);
+    margin: 0;
+    text-align: center;
+    letter-spacing: 0.05em;
+    padding: 2vmin 2vmin 0 2vmin;
+}
+
+#overlay-desc {
+    font-size: 2vmin;
+    color: var(--text-subtle);
+    font-style: italic;
+    text-align: center;
+    max-width: 40vw;
+    line-height: 1.9;
+    margin: 0 auto;
+    padding: 3vmin 2vmin 0 2vmin;
+}
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 700px) {
+    .titulum {
+        top: 10vmin;
+        transform: translateX(-50%);
+    }
+    .titulum img {
+        width: 18vmax;
+    }
+
+    .drawings {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6vmin;
+        padding: 4vmin 5vmin 8vmin 5vmin;
+    }
+    .drawings.compact {
+        grid-template-columns: repeat(1, 1fr);
+        padding-left: 50vw;
+    }
+    .drawing {
+        width: 30vmax;
+        height: 30vmax;
+    }
+    .drawing-item figcaption { font-size: 2.8vmin; }
+
+    #overlay-name  { font-size: 6vmin; }
+    #overlay-type  { font-size: 2.5vmin; }
+    #overlay-ratio { font-size: 3.5vmin; }
+    #overlay-desc  { font-size: 3vmin; max-width: 80vw; }
+
+    #froccslist a  { font-size: 2.8vmin; }
+}
+
+@media (min-width: 701px) and (max-width: 1100px) {
+    .drawings {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
