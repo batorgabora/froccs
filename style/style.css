@@ -284,7 +284,7 @@ body {
         padding-left: 23vw;
     }
     
-
+    #drawing-overlay    {padding-top: 10vmin;}
     #overlay-name  { font-size: 6vmin; }
     #overlay-type  { font-size: 2.5vmin; }
     #overlay-ratio { font-size: 3.5vmin; }
