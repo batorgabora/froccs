@@ -269,20 +269,21 @@ body {
         width: 18vmax;
     }
 
-    .drawings {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 6vmin;
-        padding: 4vmin 5vmin 8vmin 5vmin;
-    }
-    .drawings.compact {
-        grid-template-columns: repeat(1, 1fr);
-        padding-left: 50vw;
-    }
     .drawing {
-        width: 30vmax;
-        height: 30vmax;
+        width: calc(var(--drawing-size) * 0.75);
+        width: calc(var(--drawing-size) * 0.75);
     }
     .drawing-item figcaption { font-size: 2.8vmin; }
+
+    .drawings {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 5vmin;
+        padding: 20vmin 5vmin 8vmin 5vmin;
+    }
+    .drawings.compact {
+        padding-left: 23vw;
+    }
+    
 
     #overlay-name  { font-size: 6vmin; }
     #overlay-type  { font-size: 2.5vmin; }
